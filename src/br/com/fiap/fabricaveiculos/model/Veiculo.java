@@ -175,6 +175,24 @@ public abstract class Veiculo {
 		}
 	}
 
+	public void acelera(double velocidade) {
+		if (this.estaLigado) {
+			if (this.velocidade + velocidade > this.limiteVelocidade) {
+				this.velocidade = this.limiteVelocidade;
+			} else {
+				this.velocidade += velocidade;
+			}
+		}
+	}
+
+	public void desacelera(double velocidade) {
+		if (this.velocidade - velocidade < 0) {
+			this.velocidade = 0;
+		} else {
+			this.velocidade -= velocidade;
+		}
+	}
+
 	public void exibirInformacoes() {
 		System.out.println("===============================");
 		System.out.println("|         INFORMAÇÕES         |");
