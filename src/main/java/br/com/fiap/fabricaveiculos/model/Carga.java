@@ -1,5 +1,10 @@
 package br.com.fiap.fabricaveiculos.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Carga {
 
     // Atributos
@@ -9,23 +14,6 @@ public class Carga {
     // Construtor
     public Carga(String tipo, double quantidadeCargaAbastecida) {
         this.tipo = tipo;
-        this.quantidadeCargaAbastecida = quantidadeCargaAbastecida;
-    }
-
-    // Getters e Setters
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getQuantidadeCargaAbastecida() {
-        return quantidadeCargaAbastecida;
-    }
-
-    public void setQuantidadeCargaAbastecida(double quantidadeCargaAbastecida) {
         this.quantidadeCargaAbastecida = quantidadeCargaAbastecida;
     }
 
