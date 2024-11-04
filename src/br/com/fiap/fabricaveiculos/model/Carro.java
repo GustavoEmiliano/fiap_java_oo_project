@@ -15,7 +15,8 @@ public class Carro extends Veiculo {
             System.out.println("Não foi possível abastecer! Excedeu a quantidade de 50 litros!");
         } else {
             tanque += quantidade;
-            double rendimentoTotal = combustivel.abastecer(quantidade);
+            double rendimentoTotal = 0;
+            rendimentoTotal += combustivel.abastecer(quantidade);
             this.capacidadeRodagem += rendimentoTotal;
             System.out.printf("Abastecido com %.2f litros de %s. Capacidade de rodagem atual: %.2f km%n", quantidade, combustivel.getTipo(), this.capacidadeRodagem);
         }
