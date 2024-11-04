@@ -10,8 +10,6 @@ public class Caminhao extends Veiculo {
     private Carga carga;
 
     // Construtor
-
-
     public Caminhao(String marca, String modelo, String cor, Date anoFabricacao, Date anoModelo, String renavam, String motor, String cambio, int aroRodas, double velocidade, int limiteVelocidade, Condutor condutor, boolean estaLigado, double tanque, double capacidadeRodagem, int eixos, double capacidadeMaximaCarga, double quantidadeAtual, Carga carga) {
         super(marca, modelo, cor, anoFabricacao, anoModelo, renavam, motor, cambio, aroRodas, velocidade, limiteVelocidade, condutor, estaLigado, tanque, capacidadeRodagem);
         this.eixos = eixos;
