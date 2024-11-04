@@ -1,7 +1,12 @@
 package br.com.fiap.fabricaveiculos.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
+@Getter
+@Setter
 public class Caminhao extends Veiculo {
 
     // Atributos
@@ -14,31 +19,6 @@ public class Caminhao extends Veiculo {
         super(marca, modelo, cor, anoFabricacao, anoModelo, renavam, motor, cambio, aroRodas, velocidade, limiteVelocidade, condutor, estaLigado, tanque, capacidadeRodagem);
         this.eixos = eixos;
         this.capacidadeMaximaCarga = capacidadeMaximaCarga;
-        this.carga = carga;
-    }
-
-    // Getters e Setters
-    public int getEixos() {
-        return eixos;
-    }
-
-    public void setEixos(int eixos) {
-        this.eixos = eixos;
-    }
-
-    public double getCapacidadeMaximaCarga() {
-        return capacidadeMaximaCarga;
-    }
-
-    public void setCapacidadeMaximaCarga(double capacidadeMaximaCarga) {
-        this.capacidadeMaximaCarga = capacidadeMaximaCarga;
-    }
-
-    public Carga getCarga() {
-        return carga;
-    }
-
-    public void setCarga(Carga carga) {
         this.carga = carga;
     }
 

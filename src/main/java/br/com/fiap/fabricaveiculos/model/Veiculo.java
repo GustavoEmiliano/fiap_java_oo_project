@@ -1,7 +1,12 @@
 package br.com.fiap.fabricaveiculos.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
+@Getter
+@Setter
 public abstract class Veiculo {
 
 	// Atributos
@@ -39,127 +44,6 @@ public abstract class Veiculo {
 		this.condutor = condutor;
 		this.estaLigado = estaLigado;
 		this.tanque = tanque;
-		this.capacidadeRodagem = capacidadeRodagem;
-	}
-
-	// Getters e Setters
-	public String getMarca() {
-		return marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
-
-	public String getModelo() {
-		return modelo;
-	}
-
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-
-	public String getCor() {
-		return cor;
-	}
-
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
-
-	public Date getAnoFabricacao() {
-		return anoFabricacao;
-	}
-
-	public void setAnoFabricacao(Date anoFabricacao) {
-		this.anoFabricacao = anoFabricacao;
-	}
-
-	public Date getAnoModelo() {
-		return anoModelo;
-	}
-
-	public void setAnoModelo(Date anoModelo) {
-		this.anoModelo = anoModelo;
-	}
-
-	public String getRenavam() {
-		return renavam;
-	}
-
-	public void setRenavam(String renavam) {
-		this.renavam = renavam;
-	}
-
-	public String getMotor() {
-		return motor;
-	}
-
-	public void setMotor(String motor) {
-		this.motor = motor;
-	}
-
-	public String getCambio() {
-		return cambio;
-	}
-
-	public void setCambio(String cambio) {
-		this.cambio = cambio;
-	}
-
-	public int getAroRodas() {
-		return aroRodas;
-	}
-
-	public void setAroRodas(int aroRodas) {
-		this.aroRodas = aroRodas;
-	}
-
-	public double getVelocidade() {
-		return velocidade;
-	}
-
-	public void setVelocidade(double velocidade) {
-		this.velocidade = velocidade;
-	}
-
-	public int getLimiteVelocidade() {
-		return limiteVelocidade;
-	}
-
-	public void setLimiteVelocidade(int limiteVelocidade) {
-		this.limiteVelocidade = limiteVelocidade;
-	}
-
-	public Condutor getCondutor() {
-		return condutor;
-	}
-
-	public void setCondutor(Condutor condutor) {
-		this.condutor = condutor;
-	}
-
-	public boolean isEstaLigado() {
-		return estaLigado;
-	}
-
-	public void setEstaLigado(boolean estaLigado) {
-		this.estaLigado = estaLigado;
-	}
-
-	public double getTanque() {
-		return tanque;
-	}
-
-	public void setTanque(double tanque) {
-		this.tanque = tanque;
-	}
-
-	public double getCapacidadeRodagem() {
-		return capacidadeRodagem;
-	}
-
-	public void setCapacidadeRodagem(double capacidadeRodagem) {
 		this.capacidadeRodagem = capacidadeRodagem;
 	}
 
@@ -208,7 +92,7 @@ public abstract class Veiculo {
 		System.out.println("Aro das rodas: " + this.aroRodas);
 		System.out.println("Velocidade atual: " + this.velocidade + " km/h");
 		System.out.println("Limite de velocidade: " + this.limiteVelocidade + " km/h");
-		System.out.println("Condutor: " + (this.condutor != null ? this.condutor.getNomeCondutor() : "Nenhum"));
+		System.out.println("Condutor: " + (this.condutor != null ? this.condutor.getNome() : "Nenhum"));
 		System.out.println("Veículo está ligado: " + (this.estaLigado ? "Sim" : "Não"));
 		System.out.println("Nível do tanque: " + this.tanque + " litros");
 		System.out.println("Capacidade de rodagem: " + this.capacidadeRodagem + " km");
