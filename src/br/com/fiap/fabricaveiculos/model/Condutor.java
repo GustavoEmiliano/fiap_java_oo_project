@@ -1,23 +1,11 @@
 package br.com.fiap.fabricaveiculos.model;
 
-public class Condutor {
+public class Condutor extends Pessoa {
+	private String cnh;
 
-    // Atributos
-    private String nomeCondutor;
-    private int idadeCondutor;
+	public Condutor(String nome, String cpf, String endereco, int idade, String cnh) {
+		super(nome, cpf, endereco, idade);
+		this.cnh = cnh;
+	}
 
-    // Construtor
-    public Condutor(String nomeCondutor, int idadeCondutor) {
-        this.nomeCondutor = nomeCondutor;
-        this.idadeCondutor = idadeCondutor;
-    }
-
-    // Getters
-    public String getNomeCondutor() {
-        return nomeCondutor;
-    }
-
-    public int getIdadeCondutor() {
-        return idadeCondutor;
-    }
 }
