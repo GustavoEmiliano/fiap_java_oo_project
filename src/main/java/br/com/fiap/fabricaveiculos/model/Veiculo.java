@@ -51,11 +51,13 @@ public abstract class Veiculo {
 
 	public void liga() {
 		this.estaLigado = true;
+		System.out.println("Carro ligado 🔑");
 	}
 
 	public void desliga() {
 		if (this.estaLigado) {
 			this.estaLigado = false;
+			System.out.println("Carro desligado 📴.");
 		}
 	}
 
@@ -65,6 +67,7 @@ public abstract class Veiculo {
 				this.velocidade = this.limiteVelocidade;
 			} else {
 				this.velocidade += velocidade;
+				System.out.println("Acelerando ⚡️...");
 			}
 		}
 	}
@@ -74,6 +77,7 @@ public abstract class Veiculo {
 			this.velocidade = 0;
 		} else {
 			this.velocidade -= velocidade;
+			System.out.println("Desacelerando 🛑...");
 		}
 	}
 

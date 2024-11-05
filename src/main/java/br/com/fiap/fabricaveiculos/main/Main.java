@@ -24,7 +24,7 @@ public class Main {
                 condutor,
                 false,
                 20.0,
-                600.0
+                0
         );
 
         carro.abastecer(new Gasolina(), 20.0);
@@ -34,8 +34,13 @@ public class Main {
         carro.desliga();
         carro.exibirInformacoes();
 
-        boolean sair = false;
+        menu(carro);
 
+    }
+
+    public static void menu(Carro carro){
+        Scanner scanner = new Scanner(System.in);
+        boolean sair = false;
         while (!sair) {
             System.out.println("================================");
             System.out.println("|             MENU             |");
@@ -80,26 +85,22 @@ public class Main {
 
                 case 2:
                     carro.liga();
-                    System.out.println("Carro ligado 🔑");
                     break;
 
                 case 3:
                     System.out.print("Digite a velocidade para acelerar (km/h): ");
                     double velocidadeAcelerar = scanner.nextDouble();
                     carro.acelera(velocidadeAcelerar);
-                    System.out.println("Acelerando ⚡️...");
                     break;
 
                 case 4:
                     System.out.print("Digite a velocidade para desacelerar (km/h): ");
                     double velocidadeDesacelerar = scanner.nextDouble();
                     carro.desacelera(velocidadeDesacelerar);
-                    System.out.println("Desacelerando 🛑...");
                     break;
 
                 case 5:
                     carro.desliga();
-                    System.out.println("Carro desligado 📴.");
                     break;
 
                 case 6:
@@ -115,7 +116,6 @@ public class Main {
                     System.out.println("Opção inválida. Tente novamente.");
             }
         }
-
         scanner.close();
     }
 }
