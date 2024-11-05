@@ -1,31 +1,15 @@
 package br.com.fiap.fabricaveiculos.main;
 
 import br.com.fiap.fabricaveiculos.model.*;
+
 import java.util.Date;
-import java.util.Scanner;
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         Condutor condutor = new Condutor("Nome Condutor", "cpf", "endereço", 20, "cnh");
 
-        Carro carro = new Carro(
-                "Toyota",
-                "Corolla",
-                "Branco",
-                new Date(2010, 1, 1),
-                new Date(2010, 1, 1),
-                "123456789",
-                "1.8L",
-                "Automático",
-                16,
-                0.0,
-                180,
-                condutor,
-                false,
-                20.0,
-                0
-        );
+        Carro carro = new Carro("Toyota", "Corolla", "Branco", new Date(2010, 1, 1), new Date(2010, 1, 1), "123456789", "1.8L", "Automático", 16, 0.0, 180, condutor, false, 20.0, 0);
 
         carro.abastecer(new Gasolina(), 20.0);
         carro.liga();
@@ -38,84 +22,82 @@ public class Main {
 
     }
 
-    public static void menu(Carro carro){
-        Scanner scanner = new Scanner(System.in);
+    public static void menu(Carro carro) {
         boolean sair = false;
         while (!sair) {
-            System.out.println("================================");
-            System.out.println("|             MENU             |");
-            System.out.println("================================");
-            System.out.println("1. ⛽️ Abastecer");
-            System.out.println("2. 🔑 Ligar o Carro");
-            System.out.println("3. ⚡️ Acelerar");
-            System.out.println("4. 🛑 Desacelerar");
-            System.out.println("5. 📴 Desligar o Carro");
-            System.out.println("6. 📋 Exibir Informações do Carro");
-            System.out.println("7. 🚪 Sair");
-            System.out.print("Escolha uma opção: ");
+            String[] opcoesMenu = {"⛽️ Abastecer", "🔑 Ligar o Carro", "⚡️ Acelerar", "🛑 Desacelerar", "📴 Desligar o Carro", "📋 Exibir Informações do Carro", "🚪 Sair"};
 
-            int escolha = scanner.nextInt();
+            int escolha = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Menu Principal", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
+
             switch (escolha) {
-                case 1:
-                    System.out.println("\nEscolha o tipo de combustível:");
-                    System.out.println("1. 🟢 Gasolina");
-                    System.out.println("2. 🔴 Álcool");
-                    System.out.println("3. 🟡 Diesel");
-                    System.out.print("Digite o número correspondente: ");
-                    int combustivelTipo = scanner.nextInt();
-                    System.out.print("Digite a quantidade de litros: ");
-                    double litros = scanner.nextDouble();
+                case 0: // Abastecer
+                    String[] tiposCombustivel = {"🟢 Gasolina", "🔴 Álcool", "🟡 Diesel"};
+                    int combustivelTipo = JOptionPane.showOptionDialog(null, "Escolha o tipo de combustível:", "Tipo de Combustível", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, tiposCombustivel, tiposCombustivel[0]);
 
-                    Combustivel combustivel;
-                    if (combustivelTipo == 1) {
-                        combustivel = new Gasolina();
-                        System.out.println("Abastecendo com 🟢 Gasolina...");
-                    } else if (combustivelTipo == 2) {
-                        combustivel = new Alcool();
-                        System.out.println("Abastecendo com 🔴 Álcool...");
-                    } else if (combustivelTipo == 3) {
-                        combustivel = new Diesel();
-                        System.out.println("Abastecendo com 🟡 Diesel...");
-                    } else {
-                        System.out.println("Opção inválida.");
-                        break;
+                    String litrosStr = JOptionPane.showInputDialog("Digite a quantidade de litros:");
+                    if (litrosStr != null) {
+                        double litros = Double.parseDouble(litrosStr);
+
+                        Combustivel combustivel;
+                        switch (combustivelTipo) {
+                            case 0:
+                                combustivel = new Gasolina();
+                                JOptionPane.showMessageDialog(null, "Abastecendo com 🟢 Gasolina...");
+                                break;
+                            case 1:
+                                combustivel = new Alcool();
+                                JOptionPane.showMessageDialog(null, "Abastecendo com 🔴 Álcool...");
+                                break;
+                            case 2:
+                                combustivel = new Diesel();
+                                JOptionPane.showMessageDialog(null, "Abastecendo com 🟡 Diesel...");
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "Opção inválida.");
+                                continue;
+                        }
+                        carro.abastecer(combustivel, litros);
                     }
-                    carro.abastecer(combustivel, litros);
+                    break;
+
+                case 1:
+                    carro.liga();
+                    JOptionPane.showMessageDialog(null, "Carro ligado.");
                     break;
 
                 case 2:
-                    carro.liga();
+                    String velocidadeAcelerarStr = JOptionPane.showInputDialog("Digite a velocidade para acelerar (km/h):");
+                    if (velocidadeAcelerarStr != null) {
+                        double velocidadeAcelerar = Double.parseDouble(velocidadeAcelerarStr);
+                        carro.acelera(velocidadeAcelerar);
+                    }
                     break;
 
                 case 3:
-                    System.out.print("Digite a velocidade para acelerar (km/h): ");
-                    double velocidadeAcelerar = scanner.nextDouble();
-                    carro.acelera(velocidadeAcelerar);
+                    String velocidadeDesacelerarStr = JOptionPane.showInputDialog("Digite a velocidade para desacelerar (km/h):");
+                    if (velocidadeDesacelerarStr != null) {
+                        double velocidadeDesacelerar = Double.parseDouble(velocidadeDesacelerarStr);
+                        carro.desacelera(velocidadeDesacelerar);
+                    }
                     break;
 
                 case 4:
-                    System.out.print("Digite a velocidade para desacelerar (km/h): ");
-                    double velocidadeDesacelerar = scanner.nextDouble();
-                    carro.desacelera(velocidadeDesacelerar);
+                    carro.desliga();
+                    JOptionPane.showMessageDialog(null, "Carro desligado.");
                     break;
 
                 case 5:
-                    carro.desliga();
+                    JOptionPane.showMessageDialog(null, carro.getInformacoes(), "Informações do Carro", JOptionPane.INFORMATION_MESSAGE);
                     break;
 
                 case 6:
-                    carro.exibirInformacoes();
-                    break;
-
-                case 7:
-                    System.out.println("Saindo do sistema 🚪...");
+                    JOptionPane.showMessageDialog(null, "Saindo do sistema 🚪...");
                     sair = true;
                     break;
 
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                    JOptionPane.showMessageDialog(null, "Opção inválida. Tente novamente.");
             }
         }
-        scanner.close();
     }
 }

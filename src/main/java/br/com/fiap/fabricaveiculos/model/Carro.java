@@ -11,21 +11,51 @@ public class Carro extends Veiculo {
 
     // Métodos
     public void abastecer(Combustivel combustivel, double quantidade) {
-        if (tanque + quantidade > 50) {
+        if (getTanque() + quantidade > 50) {
             System.out.println("Não foi possível abastecer! Excedeu a quantidade de 50 litros!");
         } else {
-            tanque += quantidade;
-            double rendimentoTotal = 0;
-            rendimentoTotal += combustivel.abastecer(quantidade);
-            this.capacidadeRodagem += rendimentoTotal;
-            System.out.printf("Abastecido com %.2f litros de %s. Capacidade de rodagem atual: %.2f km%n", quantidade, combustivel.getTipo(), this.capacidadeRodagem);
+            setTanque(getTanque() + quantidade);
+            double rendimentoTotal = combustivel.abastecer(quantidade);
+            setCapacidadeRodagem(getCapacidadeRodagem() + rendimentoTotal);
+            System.out.printf("Abastecido com %.2f litros de %s. Capacidade de rodagem atual: %.2f km%n", quantidade, combustivel.getTipo(), getCapacidadeRodagem());
         }
     }
 
     @Override
     public void exibirInformacoes() {
         super.exibirInformacoes();
-        System.out.printf("Capacidade de Rodagem: %.2f km%n", this.capacidadeRodagem); // Se capacidadeRodagem for herdada
+        System.out.printf("Capacidade de Rodagem: %.2f km%n", getCapacidadeRodagem());
         System.out.println("===============================");
+    }
+
+    public String getInformacoes() {
+        return String.format(
+                "🚗 Marca: %s\n" +
+                        "📄 Modelo: %s\n" +
+                        "🎨 Cor: %s\n" +
+                        "🛠 Ano de Fabricação: %tY\n" +
+                        "🗓 Ano do Modelo: %tY\n" +
+                        "🔢 Chassi: %s\n" +
+                        "⚙️ Motor: %s\n" +
+                        "🕹 Transmissão: %s\n" +
+                        "🚪 Aro das Rodas: %d\n" +
+                        "⛽️ Nível de Combustível: %.2f L\n" +
+                        "💨 Velocidade Máxima: %d km/h\n" +
+                        "👤 Condutor: %s\n" +
+                        "🔋 Capacidade de Rodagem: %.2f km\n",
+                getMarca(),
+                getModelo(),
+                getCor(),
+                getAnoFabricacao(),
+                getAnoModelo(),
+                getRenavam(),
+                getMotor(),
+                getCambio(),
+                getAroRodas(),
+                getTanque(),
+                getLimiteVelocidade(),
+                getCondutor().getNome(),
+                getCapacidadeRodagem()
+        );
     }
 }
